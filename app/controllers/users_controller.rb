@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to action: "index" , notice: "登録完了しました"
+      redirect_to :root , notice: "登録完了しました"
     else
       render "new"
     end
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.assign_attributes(params[:user])
     if @user.save
-      redirect_to action: "index" , notice: "登録完了しました"
+      redirect_to :root , notice: "登録完了しました"
     else
       render "new"
     end

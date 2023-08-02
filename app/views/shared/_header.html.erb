@@ -1,0 +1,6 @@
+<% if current_user %>
+  <ul class="account-menu">
+    <%= link_to current_user.name + "さん" %>
+    <%= link_to "ログアウト", :session, method: :delete, data: { confirm: "ログアウトしますか？" } %>
+  </ul>
+<% end %>
