@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <main>
+      <% if flash.notice %>
+        <p class = "notice" ><%= flash.notice %></p>
+      <% end%>
+    </main>
     <%= yield %>
   </body>
 </html>

@@ -17,6 +17,7 @@ module WebUI
     # in config/environments, which are processed later.
     #
     config.time_zone = "Tokyo"
+    config.action_controller.permit_all_parameters = true
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

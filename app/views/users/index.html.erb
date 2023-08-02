@@ -1,0 +1,20 @@
+<% if @users.present? %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>ユーザー名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.administrator %></td>
+          <td><%= link_to "編集" , [:edit , user]%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>会員情報がありません。</p>
+<% end %>
