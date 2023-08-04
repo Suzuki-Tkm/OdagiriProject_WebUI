@@ -26,10 +26,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.assign_attributes(params[:user])
     if @user.save
-      redirect_to accounts_edit_path , notice: "登録完了しました"
+      redirect_to users_path , notice: "登録完了しました"
     else
       flash.alert = "誤りがあります"
       render "new"
     end
+  end
+
+  def showPicture
+    @user = current_user
   end
 end

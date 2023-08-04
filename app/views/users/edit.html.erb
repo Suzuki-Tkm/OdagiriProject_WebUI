@@ -1,4 +1,9 @@
 <%= form_for @user do |form| %>
-  <%= render "form", form: form %>
+<table class="attr">
+  <tr>
+    <th><%= form.label :new_picture %> </th>
+    <td><%= form.file_field :new_picture %> </th>
+  </tr>
+  </table>
   <div><%= form.submit %></div>
 <% end %>

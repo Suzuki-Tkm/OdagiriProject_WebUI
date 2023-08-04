@@ -1,0 +1,5 @@
+<% if @user.picture.attached? %>
+  <%= image_tag(rails_blob_path(@user.picture)) %>
+<% else %>
+  <p>まだ生成されていません。表示されない場合はリロードをしてください</p>
+<% end %>

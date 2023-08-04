@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   
   root 'top#index'
-  resources :users
+  resources :users do
+    get "showPicture", on: :collection
+  end
 
   resource :session , only: [:create , :destroy]
   resource :accounts , only: [:show , :edit , :update]

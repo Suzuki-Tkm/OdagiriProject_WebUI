@@ -75,3 +75,8 @@ end
 gem "rqrcode"
 gem "rqrcode_png"
 gem "chunky_png"
+
+# Use ActiveStorage variant
+gem 'mini_magick', '~> 4.8'
+
+gem 'image_processing', '~> 1.2'
