@@ -1,8 +1,14 @@
 <%= render "shared/errors", obj: @user %>
-
+<% if flash.alert %><p class="alert"><%= flash.alert %></p><% end %>
 <table class="attr">
   <tr>
     <th><%= form.label :name, "ユーザー名" %></th>
     <td><%= form.text_field :name %></td>
   </tr>
+  <% if @user.new_record? %>
+    <tr>
+      <th><%= form.label :password, "パスワード" %></th>
+      <td><%= form.text_field :password %></td>
+    </tr>
+  <% end %>
 </table>

@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     create_table :users do |t|
       t.string :name , null: false
       t.boolean :administrator , null: false , default: false
+      t.string :painting_taste
       t.timestamps
     end
   end

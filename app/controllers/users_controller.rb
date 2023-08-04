@@ -14,8 +14,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      cookies[:user_id] = {value: @user.id }
       redirect_to :root , notice: "登録完了しました"
     else
+      flash.alert = "その名前は使えません"
       render "new"
     end
   end
@@ -24,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.assign_attributes(params[:user])
     if @user.save
+      flash.alert = "その名前は使えません"
       redirect_to :root , notice: "登録完了しました"
     else
       render "new"

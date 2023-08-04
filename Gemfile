@@ -70,3 +70,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# QRコード
+gem "rqrcode"
+gem "rqrcode_png"
+gem "chunky_png"
