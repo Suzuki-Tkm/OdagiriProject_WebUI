@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_forgery_protection only: :updatePicture
   def index
     @users = User.order("id")
   end
@@ -35,5 +36,11 @@ class UsersController < ApplicationController
 
   def showPicture
     @user = current_user
+  end
+
+  def updatePicture
+    user = User.find(params[:user_id])
+    user.update(name: params[:name])
+    render json: { message: 'Update successful' }
   end
 end
