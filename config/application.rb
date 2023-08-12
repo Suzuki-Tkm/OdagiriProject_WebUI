@@ -19,5 +19,9 @@ module WebUI
     config.time_zone = "Tokyo"
     config.action_controller.permit_all_parameters = true
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.exceptions_app = ->(env) do
+      ErrorsController.action(:show).call(env)
+    end
   end
 end

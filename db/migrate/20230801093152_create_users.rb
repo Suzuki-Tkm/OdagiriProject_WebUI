@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :name , null: false
       t.boolean :administrator , null: false , default: false
       t.string :painting_taste
+      t.string :feeling
       t.timestamps
     end
   end
