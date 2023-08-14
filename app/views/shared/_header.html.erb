@@ -1,9 +1,14 @@
 <% if current_user %>
   <ul class="account-menu">
     <%= current_user.name + "さん" %>
-    <%= link_to "QRコード" , accounts_show_path %>
-    <%= link_to "入力フォーム" , accounts_edit_path  %>
-    <%= link_to "生成された画像" , showPicture_users_path  %>
+    <% if current_user.administrator? %>
+      <%= link_to "管理TOP", :admin_root %>
+      <%= link_to "生成画像の追加", [:admin , :users] %>
+    <% else %>
+      <%= link_to "QRコード" , accounts_show_path %>
+      <%= link_to "入力フォーム" , accounts_edit_path  %>
+      <%= link_to "生成された画像" , showPicture_users_path  %>
+    <% end %>
     <%= button_to "ログアウト", session_path, method: :delete %>
   </ul>
 <% end %>

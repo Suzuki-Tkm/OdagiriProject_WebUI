@@ -9,4 +9,15 @@ class AccountsController < ApplicationController
   def edit
     @user = current_user
   end
+
+  def update
+    @user = current_user
+    @user.assign_attributes(params[:account])
+    if @user.save
+      redirect_to users_path , notice: "登録完了しました"
+    else
+      flash.alert = "誤りがあります"
+      render "new"
+    end
+  end
 end

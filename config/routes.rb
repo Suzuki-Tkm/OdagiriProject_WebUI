@@ -13,11 +13,17 @@ Rails.application.routes.draw do
   get "forbidden" => "top#forbidden"
   get "internal_server_error" => "top#internal_server_error"
   
-  resources :users do
+  resources :users , only: [:new , :create] do
     get "showPicture", on: :collection
-    patch "updatePicture"
   end
 
   resource :session , only: [:create , :destroy]
-  resource :accounts , only: [:show , :edit , :update]
+  resource :account , only: [:show , :edit , :update]
+
+  namespace :admin do
+    root "top#index"
+    resources :users , only: [:index , :edit , :update] do
+      patch "updatePicture"
+    end
+  end
 end
