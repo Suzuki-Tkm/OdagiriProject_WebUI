@@ -1,4 +1,25 @@
-<h1>小田切プロジェクト</h1>
-<p>管理者ページ</p>
+<h1>小田切プロジェクト管理者ページ</h1>
 
 <p>生成情報</p>
+
+<% if @users.present? %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>ユーザー名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.administrator %></td>
+          <td><%= user.painting_taste %></td>
+          <td><%= user.feeling %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>会員情報がありません。</p>
+<% end %>

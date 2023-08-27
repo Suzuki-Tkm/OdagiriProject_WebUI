@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   resources :users , only: [:new , :create] do
     get "showPicture", on: :collection
+    patch "updatePicture"
   end
 
   resource :session , only: [:create , :destroy]

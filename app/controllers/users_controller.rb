@@ -18,8 +18,8 @@ class UsersController < ApplicationController
       cookies[:user_id] = {value: @user.id }
       redirect_to accounts_edit_path , notice: "登録完了しました"
     else
-      flash.alert = "誤りがあります"
-      render "new"
+      flash.alert = "名前が使用されています。またはパスワードの入力が正しくありません。"
+      redirect_to new_user_path
     end
   end
 
@@ -29,8 +29,8 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path , notice: "登録完了しました"
     else
-      flash.alert = "誤りがあります"
-      render "new"
+      flash.alert = "名前が使用されています。またはパスワードの入力が正しくありません。"
+      redirect_to new_user_path
     end
   end
 
