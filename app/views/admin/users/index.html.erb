@@ -3,14 +3,20 @@
     <thead>
       <tr>
         <th>ユーザー名</th>
+        <th>生成画像の追加</th>
+        <th>生成状況</th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
           <td><%= user.name %></td>
-          <td><%= user.administrator %></td>
-          <td><%= link_to "編集" , [:edit , :admin , user]%></td>
+          <td><%= link_to "追加" , [:edit , :admin , user]%></td>
+          <% if user.picture.attached? %>
+            <td><%= "◯" %></td>
+          <% else %>
+            <td><%= "×" %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

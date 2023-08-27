@@ -1,10 +1,23 @@
 <h1>小田切プロジェクト</h1>
-<p>画像生成体験フォーム</p>
+<h3>画像生成体験フォーム</h3>
+
+<details>
+  <summary>注意事項</summary>
+  <ul>
+    <li>個人情報の入力はしないようお願いします。</li>
+    <li>集めたデータは本イベント以外では使用しません。</li>
+    <li>不安定な部分もありますので、トラブルがありましたら、スタッフまでご連絡ください。</li>
+</ul>
+
+</details>
 
 <%# 管理者で実装 %>
 <% if !current_user %>
 
-  <%= link_to "新規登録", :new_user %>
+  <%= link_to "新規登録", :new_user  , class: "regist"%>
+
+  <hr>
 
   <%= render "shared/login_form" %>
+
 <% end %>

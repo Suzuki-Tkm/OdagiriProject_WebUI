@@ -12,7 +12,7 @@ class Admin::UsersController < Admin::Base
     @user = User.find(params[:id])
     @user.assign_attributes(params[:user])
     if @user.save
-      redirect_to [:admin , @user ] , notice: "更新しました"
+      redirect_to admin_users_path , notice: "更新しました"
     else
       flash.alert = "誤りがあります"
       render "new"

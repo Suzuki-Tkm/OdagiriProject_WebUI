@@ -1,6 +1,7 @@
 /* フラッシュ */
 p.notice {
-  border: 1px solid blue;
+  border: 1px solid rgb(40, 40, 44);
   padding: 3px;
-  background-color: #ccf;
+  background-color: rgb(112, 112, 114);
+  color: white;
 }

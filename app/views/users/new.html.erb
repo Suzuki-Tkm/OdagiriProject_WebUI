@@ -1,4 +1,6 @@
+<h2>アカウントの新規登録</h2>
+
 <%= form_for @user do |form| %>
   <%= render "form", form: form %>
-  <div><%= form.submit %></div>
+  <div class = "new_account"><%= form.submit "始める"%></div>
 <% end %>

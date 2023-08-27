@@ -13,3 +13,215 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+ul.account-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+}
+
+ul.account-menu a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+ul.account-menu a:hover {
+  text-decoration: underline;
+}
+
+ul.account-menu form {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.main-content {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+form.edit_account {
+  text-align: center;
+  margin-top: 20px;
+}
+
+table.attr {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.attr th,
+table.attr td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+table.attr th {
+  text-align: right;
+  width: 40%;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  background-color: #3C4048;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+input[type="submit"]:hover {
+  background-color: #3C4048;
+}
+
+.list {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+.list th,
+.list td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.list th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.list tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.list tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.regist {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3C4048;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 30px;
+}
+
+.regist:hover {
+  background-color: #3C4048;
+}
+
+.edit_account {
+  display: block;
+  margin: 0 auto;
+}
+
+.new_account {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.alert {
+  color: #ff0000;
+  background-color: #ffe6e6;
+  padding: 10px;
+  border: 1px solid #ffcccc;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+/* 追加のCSSコード */
+details {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+details summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+details ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+details ul li {
+  margin-bottom: 5px;
+}
+
+hr {
+  width: 60%;
+  border: none;
+  border-top: 2px solid #0d0d0d;
+  margin: 20px auto;
+}
+
+.qr{
+  margin-top: 30px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  margin: auto;
+  display: block;
+}

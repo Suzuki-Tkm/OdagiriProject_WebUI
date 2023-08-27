@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   # before_action :login_required
   def show
     if current_user
-      @qr = RQRCode::QRCode.new(current_user.to_json).as_svg.html_safe
+      @qr = RQRCode::QRCode.new(current_user.to_json).as_svg(module_size: 6).html_safe
     end
   end
 
@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
     @user = current_user
     @user.assign_attributes(params[:account])
     if @user.save
-      redirect_to users_path , notice: "登録完了しました"
+      redirect_to users_path , notice: "フォームを更新しました"
     else
       flash.alert = "誤りがあります"
       render "new"
