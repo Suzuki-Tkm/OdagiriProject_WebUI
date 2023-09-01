@@ -7,19 +7,37 @@
     <thead>
       <tr>
         <th>ユーザー名</th>
-        <th>管理者権限</th>
-        <th>好きな画風</th>
-        <th>感情</th>
+        <th>年齢</th>
+        <th>性格</th>
+        <th>画風</th>
+        <th>質問1</th>
+        <th>質問2</th>
+        <th>質問3</th>
+        <th>質問4</th>
+        <th>質問5</th>
+        <th>画像認識(服)</th>
+        <th>音声認識(大きさ)</th>
+        <th>音声認識(高さ)</th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
+        <% if !user.administrator%>
         <tr>
           <td><%= user.name %></td>
-          <td><%= user.administrator %></td>
+          <td><%= user.astringency_Fresh %></td>
+          <td><%= user.personality %></td>
           <td><%= user.painting_taste %></td>
-          <td><%= user.feeling %></td>
+          <td><%= user.portrait_LandscapePainting %></td>
+          <td><%= user.nature_population %></td>
+          <td><%= user.tradition_revolution %></td>
+          <td><%= user.conservative_active %></td>
+          <td><%= user.bus_question %></td>
+          <td><%= user.painting_taste %></td>
+          <td><%= user.voice_recognition_brightness %></td>
+          <td><%= user.voice_recognition_weather %></td>
         </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

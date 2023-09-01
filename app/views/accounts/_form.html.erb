@@ -2,7 +2,42 @@
 
 <table class="attr">
   <tr>
-    <th><%= form.label :painting_taste, "絵の好み" %></th>
+    <th><%= form.label :astringency_Fresh, "年齢" %></th>
+    <% options_age = [["10代" , "フレッシュ"] , ["20代" , "フレッシュ"] , ["30代" , "フレッシュ"] , ["40代" , "渋み"] , ["50代" , "渋み"] , ["60代" , "渋み"] , ["70代以上" , "渋み"]]%>
+    <td><%= form.select :astringency_Fresh , options_age%></td>
+  </tr>
+  <tr>
+    <th><%= form.label :personality, "性格は温厚か冷酷か" %></th>
+    <td><%= form.radio_button :personality , "冷酷"%>冷酷
+    <%= form.radio_button :personality , "温厚"%>温厚</td>
+  </tr>
+  <tr>
+    <th><%= form.label :painting_taste, "絵の好み(どんな言葉を入れてもOK)" %></th>
     <td><%= form.text_field :painting_taste %></td>
+  </tr>
+  <tr>
+    <th><%= form.label :portrait_LandscapePainting, "1人で何かを達成するより人と関わって何かを達成する方が好きである" %></th>
+    <td><%= form.radio_button :portrait_LandscapePainting , "人物画"%>はい
+    <%= form.radio_button :portrait_LandscapePainting , "風景画"%>いいえ</td>
+  </tr>
+  <tr>
+    <th><%= form.label :nature_population, "あなたは都会に住みたいですか" %></th>
+    <td><%= form.radio_button :nature_population , "人口物"%>はい
+    <%= form.radio_button :nature_population , "自然物"%>いいえ</td>
+  </tr>
+  <tr>
+    <th><%= form.label :tradition_revolution, "同じことを繰り返すのが好きか" %></th>
+    <td><%= form.radio_button :tradition_revolution , "伝統"%>はい
+    <%= form.radio_button :tradition_revolution , "革命"%>いいえ</td>
+  </tr>
+  <tr>
+    <th><%= form.label :conservative_active, "いつも同じような人と付き合うことが多い" %></th>
+    <td><%= form.radio_button :conservative_active , "保守的"%>はい
+    <%= form.radio_button :conservative_active , "活動的"%>いいえ</td>
+  </tr>
+  <tr>
+    <th><%= form.label :bus_question, "あなたはバス停にいます。次のバスまであと30分。近くには時間をつぶせそうなお店がいくつかあります。あなたならどうしますか？" %></th>
+    <% options_bus = [["本屋に行く" , "知識、自分を持っている"] , ["コンビニに行く" , "洗脳されやすい、軽い"] , ["コーヒーショップに行く" , "落ち着き、冷静"] , ["そのままバス停で待つ" , "一途"]]%>
+    <td><%= form.select :bus_question , options_bus%></td>
   </tr>
 </table>

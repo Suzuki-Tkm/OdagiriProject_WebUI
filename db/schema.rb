@@ -47,8 +47,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_064818) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "administrator", default: false, null: false
+    t.string "astringency_Fresh"
+    t.string "personality"
     t.string "painting_taste"
-    t.string "feeling"
+    t.string "portrait_LandscapePainting"
+    t.string "nature_population"
+    t.string "tradition_revolution"
+    t.string "conservative_active"
+    t.string "bus_question"
+    t.string "image_recognition"
+    t.string "voice_recognition_brightness"
+    t.string "voice_recognition_weather"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
