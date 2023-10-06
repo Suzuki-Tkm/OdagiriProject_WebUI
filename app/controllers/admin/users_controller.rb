@@ -22,6 +22,7 @@ class Admin::UsersController < Admin::Base
   def updatePicture
     user = User.find(params[:user_id])
     user.update(name: params[:name])
+    # logger.debug(params[:new_picture])
     render json: { message: 'Update successful' }
   end
 end

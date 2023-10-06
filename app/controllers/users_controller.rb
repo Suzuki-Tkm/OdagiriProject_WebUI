@@ -40,7 +40,9 @@ class UsersController < ApplicationController
 
   def updatePicture
     user = User.find(params[:user_id])
-    user.update(name: params[:name])
+    new_picture = params[:picture]
+    user.picture.attach(new_picture)
+    # logger.debug(params[:file])
     render json: { message: 'Update successful' }
   end
 end
