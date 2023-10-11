@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_forgery_protection only: :updatePicture
+  skip_forgery_protection only: [:updatePicture , :updatePronpt]
   def index
     @users = User.order("id")
   end
@@ -43,6 +43,14 @@ class UsersController < ApplicationController
     new_picture = params[:picture]
     user.picture.attach(new_picture)
     # logger.debug(params[:file])
+    render json: { message: 'Update successful' }
+  end
+
+  def updatePronpt
+    user = User.find(params[:user_id])
+    user.update(image_recognition: params[:image_recognition])
+    user.update(voice_recognition_brightness: params[:voice_recognition_brightness])
+    user.update(voice_recognition_weather: params[:voice_recognition_weather])
     render json: { message: 'Update successful' }
   end
 end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users , only: [:new , :create] do
     get "showPicture", on: :collection
     patch "updatePicture"
+    patch "updatePronpt"
   end
 
   resource :session , only: [:create , :destroy]
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     root "top#index"
     resources :users , only: [:index , :edit , :update] do
       patch "updatePicture"
+      patch "updatePronpt"
     end
   end
 end
