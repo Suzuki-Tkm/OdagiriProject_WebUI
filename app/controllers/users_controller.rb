@@ -64,7 +64,7 @@ class UsersController < ApplicationController
 
   def basic_auth
     authenticate_or_request_with_http_basic do |user,password|
-    user == "user" && password == "pass"
-  end
+      user == "user" && password == "pass"
+    end
   end
 end
