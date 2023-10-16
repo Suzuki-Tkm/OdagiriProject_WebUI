@@ -16,6 +16,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :image_recognition #画像認識
       t.string :voice_recognition_brightness #音声認識(明るさ)
       t.string :voice_recognition_weather #音声認識(天気)
+
+      t.string :pictureStyle #画風選択
       t.timestamps
     end
   end

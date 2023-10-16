@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     get "showPicture", on: :collection
     patch "updatePicture"
     patch "updatePronpt"
+
+    get "selectPictureStyle", on: :collection
+    patch "updatePictureStyle"
   end
 
   resource :session , only: [:create , :destroy]

@@ -58,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_12_064818) do
     t.string "image_recognition"
     t.string "voice_recognition_brightness"
     t.string "voice_recognition_weather"
+    t.string "pictureStyle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"

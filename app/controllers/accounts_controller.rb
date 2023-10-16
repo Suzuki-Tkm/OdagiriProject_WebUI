@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   # before_action :login_required
   def show
     if current_user
-      data = current_user.values_at(:id , :astringency_Fresh , :personality , :painting_taste , :portrait_LandscapePainting , :nature_population , :tradition_revolution , :conservative_active , :bus_question).to_json
+      data = current_user.values_at(:id , :astringency_Fresh , :personality , :painting_taste , :portrait_LandscapePainting , :nature_population , :tradition_revolution , :conservative_active , :bus_question).to_json.gsub(/"/, '')
       @qr = RQRCode::QRCode.new(data).as_svg(module_size: 6).html_safe
     end
   end

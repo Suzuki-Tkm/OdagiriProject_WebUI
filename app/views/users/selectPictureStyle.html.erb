@@ -1,0 +1,80 @@
+<div id="image-container">
+    <%= image_tag("0000043726_OG.JPG", alt: "画像1") %>
+    <%= image_tag("0000043728_OG.JPG", alt: "画像2") %>
+    <%= image_tag("0000044497_OG.JPG", alt: "画像3") %>
+    <%= image_tag("0000044512_OG.JPG", alt: "画像4") %>
+    <%= image_tag("0000924085_OG.JPG", alt: "画像5") %>
+</div>
+<button id="prev-button">前の画像</button>
+<button id="next-button">次の画像</button>
+<button id="send-button">送信</button>
+<p id="alt-display"></p>
+
+<script>
+    var images = document.querySelectorAll('#image-container img');
+    var prevButton = document.getElementById('prev-button');
+    var nextButton = document.getElementById('next-button');
+    var sendButton = document.getElementById('send-button');
+    var altDisplay = document.getElementById('alt-display');
+    var currentIndex = 0;
+
+    function updateButtonsVisibility() {
+        prevButton.style.display = currentIndex === 0 ? 'none' : 'block';
+        nextButton.style.display = currentIndex === images.length - 1 ? 'none' : 'block';
+    }
+
+    function showImage(index) {
+        hideAllImages();
+        images[index].style.display = 'block';
+        currentIndex = index;
+        updateButtonsVisibility();
+    }
+
+    function hideAllImages() {
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.display = 'none';
+        }
+    }
+
+    hideAllImages();
+    showImage(0);
+
+    prevButton.addEventListener('click', function() {
+        if (currentIndex > 0) {
+            showImage(currentIndex - 1);
+        }
+    });
+
+    nextButton.addEventListener('click', function() {
+        if (currentIndex < images.length - 1) {
+            showImage(currentIndex + 1);
+        }
+    });
+
+    sendButton.addEventListener('click', function() {
+        var userId = <%= current_user.id %>;
+        var currentImage = images[currentIndex];
+        var altText = currentImage.getAttribute('alt');
+        var rootURL = '<%= root_url.to_str %>'; 
+
+        var url = rootURL + "users/" + userId + "/updatePictureStyle";
+
+        var data = { pictureStyle: altText };
+
+        fetch(url, {
+            method: 'PATCH',
+            body: JSON.stringify(data),
+            headers: {'Content-Type': 'application/json'}
+        }).then(function(response) {
+        if (response.status === 200) {
+            console.log('Update successful');
+            altDisplay.textContent = "送信完了";
+        } else {
+            console.log('Update failed');
+        }
+        }).catch(function(error) {
+            console.error('エラー:', error);
+        });
+    });
+    updateButtonsVisibility();
+</script>

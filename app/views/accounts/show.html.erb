@@ -1,4 +1,34 @@
 <%# QRコード %>
+<% if !current_user.bus_question %>
+  <div class="Highlight" id="form-incomplete">
+    <p>フォーム 未完了</p>
+  </div>
+<% end%>
+<% if !current_user.pictureStyle %>
+  <div class="Highlight" id="style-incomplete">
+    <p>画風選択 未完了</p>
+  </div>
+<% end%>
+<% if !current_user.image_recognition %>
+  <div class="Highlight" id="recognition-incomplete">
+    <p>画像・音声認識 未完了</p>
+  </div>
+<% end%>
+
+<script>
+  if (!current_user.bus_question) {
+    document.getElementById("form-incomplete").style.display = "block";
+  }
+
+  if (!current_user.pictureStyle) {
+    document.getElementById("style-incomplete").style.display = "block";
+  }
+
+  if (!current_user.image_recognition) {
+    document.getElementById("recognition-incomplete").style.display = "block";
+  }
+</script>
+
 <div class = "qr">
   <%= @qr %>
 </div>
