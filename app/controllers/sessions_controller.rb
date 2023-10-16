@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         redirect_to accounts_edit_path
       end
     else
-      flash.alert = "名前とパスワードが一致しません"
+      flash.alert = "ユーザー名またはパスワードが正しくありません"
       redirect_to :root
     end
   end
