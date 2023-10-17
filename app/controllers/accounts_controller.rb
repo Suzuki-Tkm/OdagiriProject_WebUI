@@ -14,6 +14,7 @@ class AccountsController < ApplicationController
       crypted = enc.update(data) + enc.final
       iv_base64 = Base64.encode64(iv).gsub("\n", '')
       crypted_base64 = Base64.encode64(crypted).gsub("\n", '')
+      @qr_raw = iv_base64+crypted_base64
       @qr = RQRCode::QRCode.new(iv_base64+crypted_base64, :level => :m).as_svg(module_size: 5).html_safe
     end
   end
