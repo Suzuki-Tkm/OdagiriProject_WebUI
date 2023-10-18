@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :basic_auth, only: [:updatePicture]  # 認証が必要な機能を記述
   skip_forgery_protection only: [:updatePicture , :updatePronpt , :updatePictureStyle]
   def index
     @users = User.order("id")
@@ -59,5 +60,11 @@ class UsersController < ApplicationController
     user.update(pictureStyle: params[:pictureStyle])
     # logger.debug(user + "更新")
     render json: { message: 'Update successful' }
+  end
+
+  def basic_auth
+    authenticate_or_request_with_http_basic do |user,password|
+      user == "user" && password == "pass"
+    end
   end
 end
