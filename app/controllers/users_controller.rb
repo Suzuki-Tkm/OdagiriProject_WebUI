@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :basic_auth, only: [:updatePicture]  # 認証が必要な機能を記述
+  before_action :basic_auth, only: [:updatePicture , :updatePronpt , :updatePictureStyle]  # 認証が必要な機能を記述
   skip_forgery_protection only: [:updatePicture , :updatePronpt , :updatePictureStyle]
   def index
     @users = User.order("id")
