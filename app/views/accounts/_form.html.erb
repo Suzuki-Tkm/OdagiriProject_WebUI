@@ -3,41 +3,88 @@
 <table class="attr">
   <tr>
     <th><%= form.label :astringency_Fresh, "年齢" %></th>
-    <% options_age = [["10代" , "フレッシュ"] , ["20代" , "lip"] , ["30代" , "フレッシュ3"] , ["40代" , "渋み4"] , ["50代" , "渋み5"] , ["60代" , "dddd"] , ["70代以上" , "シニア"]]%>
+    <% options_age = [["10代" , "1"] , ["20代" , "2"] , ["30代" , "3"] , ["40代" , "4"] , ["50代" , "5"] , ["60代" , "6"] , ["70代以上" , "7"]]%>
     <td><%= form.select :astringency_Fresh , options_age%></td>
   </tr>
   <tr>
-    <th><%= form.label :personality, "性格は温厚か冷酷か" %></th>
-    <td><%= form.radio_button :personality , "冷酷"%>冷酷
-    <%= form.radio_button :personality , "温厚"%>温厚</td>
+    <th><%= form.label :personality, "自身の性格はどちら寄りだと思うか" %></th>
+    <td><%= form.radio_button :personality , "cool"%>冷酷
+    <%= form.radio_button :personality , "warm"%>温厚</td>
   </tr>
   <tr>
     <th><%= form.label :painting_taste, "絵の好み(どんな言葉を入れてもOK)" %></th>
     <td><%= form.text_field :painting_taste %></td>
   </tr>
   <tr>
-    <th><%= form.label :portrait_LandscapePainting, "1人で何かを達成するより人と関わって何かを達成する方が好きである" %></th>
-    <td><%= form.radio_button :portrait_LandscapePainting , "人物画"%>はい
-    <%= form.radio_button :portrait_LandscapePainting , "風景画"%>いいえ</td>
+    <th><%= form.label :portrait_LandscapePainting, "あなたが今一番気に入っている音楽はどの時間帯に聞くのが心地良いか" %></th>
+    <% options_time = [["早朝" , "Early morning"] , ["朝" , "morning"] , ["昼" , "afternoon"] , ["日没" , "sunset"] , ["夜" , "night"] , ["深夜" , "late night"]]%>
+    <td><%= form.select :portrait_LandscapePainting , options_time%></td>
   </tr>
   <tr>
     <th><%= form.label :nature_population, "あなたは都会に住みたいですか" %></th>
-    <td><%= form.radio_button :nature_population , "人口物"%>はい
-    <%= form.radio_button :nature_population , "自然物"%>いいえ</td>
+    <td><%= form.radio_button :nature_population , "Artificial object"%>はい
+    <%= form.radio_button :nature_population , "Natural object"%>いいえ</td>
   </tr>
   <tr>
-    <th><%= form.label :tradition_revolution, "同じことを繰り返すのが好きか" %></th>
-    <td><%= form.radio_button :tradition_revolution , "伝統"%>はい
-    <%= form.radio_button :tradition_revolution , "革命"%>いいえ</td>
+    <th><%= form.label :tradition_revolution, "芸術とは美しさである" %></th>
+    <td>
+        <input type="radio" name="visibility" value="hide" onchange="toggleElement()">はい
+        <input type="radio" name="visibility" value="show" onchange="toggleElement()">いいえ
+        <div id="targetElement" style="display: block;">
+            <% options_onomatope = [["スルスル（ベタベタ）" , "oil paintiong"] , ["サラサラ" , "watercolor painting"] , ["ガリガリ" , "pencil sketch"] , ["ジュリジュリ" , "stained glass"], ["カチカチ" , "papercuttiong"], ["シャシャシャ" , "chinese ink painting"]]%>
+            <%= form.select :tradition_revolution, options_onomatope %>
+        </div>
+    </td>
   </tr>
   <tr>
-    <th><%= form.label :conservative_active, "いつも同じような人と付き合うことが多い" %></th>
-    <td><%= form.radio_button :conservative_active , "保守的"%>はい
-    <%= form.radio_button :conservative_active , "活動的"%>いいえ</td>
+    <th><%= form.label :conservative_active, "人と接するのが大好きである" %></th>
+    <td>
+        <input type="radio" name="visibility1" value="show" onchange="toggleElement1()">はい
+        <input type="radio" name="visibility1" value="hide" onchange="toggleElement1()">いいえ
+        <div id="targetElement1" style="display: block;">
+            <% options_people = [["得意" , "closeup"] , ["それほど苦手でもない" , "looking at viewer"] , ["どちらでもない" , "shot from below"] , ["少し苦手" , "bust shot"], ["苦手" , "cowboy shot"]]%>
+            <%= form.select :conservative_active, options_people %>
+        </div>
+    </td>
   </tr>
   <tr>
     <th><%= form.label :bus_question, "あなたはバス停にいます。次のバスまであと30分。近くには時間をつぶせそうなお店がいくつかあります。あなたならどうしますか？" %></th>
-    <% options_bus = [["本屋に行く" , "知識、自分を持っている"] , ["コンビニに行く" , "洗脳されやすい、軽い"] , ["コーヒーショップに行く" , "落ち着き、冷静"] , ["そのままバス停で待つ" , "一途"]]%>
+    <% options_bus = [["本屋に行く" , "model1"] , ["コンビニに行く" , "model2"] , ["コーヒーショップに行く" , "model3"] , ["そのままバス停で待つ" , "model4"]]%>
     <td><%= form.select :bus_question , options_bus%></td>
   </tr>
 </table>
+
+<script>
+  window.onload = function() {
+            var elementToToggle = document.getElementById("targetElement");
+            var elementToToggle1 = document.getElementById("targetElement1");
+            elementToToggle.style.display = "none";
+            elementToToggle1.style.display = "none";
+        }
+  function toggleElement() {
+    var elementToToggle = document.getElementById("targetElement");
+    var radioButtons = document.getElementsByName("visibility");
+    for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            if (radioButtons[i].value === "show") {
+                  elementToToggle.style.display = "block";
+            } else if (radioButtons[i].value === "hide") {
+                  elementToToggle.style.display = "none";
+            }
+        }
+    }
+  }
+  function toggleElement1() {
+    var elementToToggle = document.getElementById("targetElement1");
+    var radioButtons = document.getElementsByName("visibility1");
+    for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            if (radioButtons[i].value === "show") {
+                  elementToToggle.style.display = "block";
+            } else if (radioButtons[i].value === "hide") {
+                  elementToToggle.style.display = "none";
+            }
+        }
+    }
+  }
+</script>
