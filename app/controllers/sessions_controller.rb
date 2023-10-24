@@ -3,7 +3,10 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(name: params[:name])
     if user&.authenticate(params[:password])
-      cookies[:user_id] = {value: user.id }
+      cookies.signed[:user_id] = {
+      :value => user.id,
+      :expires => 1.day.from_now,
+      }
       if user.administrator?
         redirect_to :root
       else
@@ -16,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    cookies.delete(:user_id)
+    cookies.delete :user_id
     redirect_to :root
   end
 end
