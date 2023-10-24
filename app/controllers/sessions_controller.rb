@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :login_required , only: [:destroy]
   def create
     user = User.find_by(name: params[:name])
     if user&.authenticate(params[:password])
