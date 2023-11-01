@@ -4,8 +4,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: params[:name])
     if user&.authenticate(params[:password])
       cookies.signed[:user_id] = {
-      :value => user.id,
-      :expires => 1.day.from_now,
+      :value => user.id
       }
       if user.administrator?
         redirect_to :root

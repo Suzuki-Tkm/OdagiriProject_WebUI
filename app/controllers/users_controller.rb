@@ -18,8 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       cookies.signed[:user_id] = {
-      :value => @user.id,
-      :expires => 1.day.from_now,
+      :value => @user.id
       }
       redirect_to accounts_edit_path , notice: "登録完了しました"
     else
