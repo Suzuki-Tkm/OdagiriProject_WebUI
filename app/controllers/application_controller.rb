@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
     User.find_by(id: cookies.signed[:user_id]) if cookies.signed[:user_id]
   end
   helper_method :current_user
-
   class LoginRequired < StandardError; end
   class Forbidden < StandardError; end
 

@@ -1,10 +1,10 @@
-
 class AccountsController < ApplicationController
-  KEY = 'RD%s5vnD_Ky~zA3Yq8MZm9syG0%BQi'
-  # before_action :login_required
+  KEY = 'Enter your key here'
+  before_action :login_required
+
   def show
     if current_user
-      data = current_user.values_at(:id , :astringency_Fresh , :personality , :painting_taste , :portrait_LandscapePainting , :nature_population , :tradition_revolution , :conservative_active , :bus_question).to_json.gsub(/"/, '')
+      data = current_user.values_at(:id , :astringency_Fresh , :personality , :painting_taste , :portrait_LandscapePainting , :nature_population , :tradition_revolution , :conservative_active , :bus_question ,:image_recognition , :voice_recognition_brightness , :voice_recognition_weather, :pictureStyle).to_json.gsub(/"/, '')
       digest = Digest::SHA256.new
       digest.update(KEY)
       enc = OpenSSL::Cipher.new('AES-256-CBC')
