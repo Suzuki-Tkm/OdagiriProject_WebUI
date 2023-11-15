@@ -1,6 +1,6 @@
 
 class AccountsController < ApplicationController
-  KEY = 'Enter your key here'
+  KEY = 'RD%s5vnD_Ky~zA3Yq8MZm9syG0%BQi'
   # before_action :login_required
   def show
     if current_user
