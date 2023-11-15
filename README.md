@@ -1,24 +1,16 @@
-# README
+# 2023小田切プロジェクト
+<b>プロジェクトサイト</b><br>
+https://www.ne.senshu-u.ac.jp/~proj2023-05/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 実行方法
+① `docker-compose build`<br>
+② `docker-compose up -d`<br>
+③ `docker-compose run --rm web rails db:create`<br>
 
-Things you may want to cover:
+`localhost:3000` でWEBが立ち上がります。
 
-* Ruby version
+## 関連URL
+* 画像生成部分 https://github.com/Ludens3562/SD2_CUI
+* 音声・画像解析 https://github.com/Suzuki-Tkm/OdagiriProject_Recognition
+* プロジェクトWEBサイト https://github.com/Suzuki-Tkm/OdagiriProject_Web
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
