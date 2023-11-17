@@ -5,7 +5,7 @@ class AccountsController < ApplicationController
   
   def show
     if current_user
-      data = current_user.values_at(:id , :astringency_Fresh , :personality , :painting_taste , :portrait_LandscapePainting , :nature_population , :tradition_revolution , :conservative_active , :bus_question ,:image_recognition , :voice_recognition_brightness , :voice_recognition_weather, :pictureStyle).to_json.gsub(/"/, '')
+      data = current_user.values_at(:id  , :personality , :painting_taste , :portrait_LandscapePainting , :nature_population , :tradition_revolution , :conservative_active ,:image_recognition , :voice_recognition_brightness , :voice_recognition_weather, :pictureStyle).to_json.gsub(/"/, '')
       digest = Digest::SHA256.new
       digest.update(KEY)
       enc = OpenSSL::Cipher.new('AES-256-CBC')
