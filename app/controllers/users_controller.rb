@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :basic_auth, only: [:updatePicture , :updatePronpt]  # 認証が必要な機能を記述
+  before_action :basic_auth, only: [:updatePicture , :updatePronpt , :updatePicture_dall]  # 認証が必要な機能を記述
   before_action :login_required , only: [:index , :edit , :update , :showPicture]
-  skip_forgery_protection only: [:updatePicture , :updatePronpt , :updatePictureStyle]
+  skip_forgery_protection only: [:updatePicture , :updatePronpt , :updatePictureStyle ,:updatePicture_dall]
   def index
     @users = User.order("id")
   end
@@ -46,6 +46,14 @@ class UsersController < ApplicationController
     user = User.find(params[:user_id])
     new_picture = params[:picture]
     user.picture.attach(new_picture)
+    # logger.debug(params[:file])
+    render json: { message: 'Update successful' }
+  end
+
+  def updatePicture_dall
+    user = User.find(params[:user_id])
+    new_picture_dall = params[:picture_dall]
+    user.picture_dall.attach(new_picture_dall)
     # logger.debug(params[:file])
     render json: { message: 'Update successful' }
   end

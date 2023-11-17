@@ -1,5 +1,14 @@
+<h3>Stable Diffusion</h3>
+
 <% if @user.picture.attached? %>
   <%= image_tag(rails_blob_path(@user.picture)) %>
+<% else %>
+  <p>まだ生成されていません。表示されない場合はリロードをしてください</p>
+<% end %>
+
+<h3>DALL·E 3</h3>
+<% if @user.picture_dall.attached? %>
+  <%= image_tag(rails_blob_path(@user.picture_dall)) %>
 <% else %>
   <p>まだ生成されていません。表示されない場合はリロードをしてください</p>
 <% end %>

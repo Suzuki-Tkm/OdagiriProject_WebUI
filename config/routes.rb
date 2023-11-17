@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users , only: [:new , :create] do
     get "showPicture", on: :collection
     patch "updatePicture"
+    patch "updatePicture_dall"
     patch "updatePronpt"
 
     get "selectPictureStyle", on: :collection
