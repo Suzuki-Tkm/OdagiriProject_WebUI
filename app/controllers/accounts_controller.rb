@@ -1,8 +1,7 @@
-
 class AccountsController < ApplicationController
   KEY = 'Enter your key here'
   before_action :login_required
-  
+
   def show
     if current_user
       data = current_user.values_at(:id  , :personality , :painting_taste , :portrait_LandscapePainting , :nature_population , :tradition_revolution , :conservative_active ,:image_recognition , :voice_recognition_brightness , :voice_recognition_weather, :pictureStyle).to_json.gsub(/"/, '')

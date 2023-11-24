@@ -1,5 +1,13 @@
 # See https://git-scm.com/docs/gitattributes for more about git attribute files.
 
+* text=auto
+*.txt       text
+*.sh        text eol=lf
+*.jpg       -text
+*.css linguist-vendored
+*.js linguist-vendored
+schema.rb merge=ours diff=ruby
+
 # Mark the database schema as having been generated.
 db/schema.rb linguist-generated
 
