@@ -1,15 +1,113 @@
-<% if current_user %>
-  <ul class="account-menu">
-    <%= current_user.name + "さん" %>
-    <% if current_user.administrator? %>
-      <%= link_to "管理TOP", :admin_root %>
-      <%= link_to "生成画像の追加", [:admin , :users] %>
-    <% else %>
-      <%= link_to "QRコード" , accounts_show_path %>
-      <%= link_to "入力フォーム" , accounts_edit_path  %>
-      <%= link_to "画風選択" , selectPictureStyle_users_path  %>
-      <%= link_to "生成された画像" , showPicture_users_path  %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      color: white;
+    }
+
+    .user-name {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-grow: 1;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ddd;
+    }
+
+    .icon {
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        margin: 10px;
+      }
+
+      .icon {
+        display: block;
+      }
+    }
+  </style>
+
+<div class="navbar" id="myNavbar">
+  <div class="nav-content">
+    <% if current_user %>
+      <div class="user-info">
+        <span class="user-name"><%= current_user.name + "さん" %></span>
+        <div class="logout-button">
+          <%= button_to "ログアウト", session_path, method: :delete %>
+        </div>
+      </div>
+      <div class="nav-links">
+        <% if current_user.administrator? %>
+          <%= link_to "管理TOP", :admin_root %>
+          <%= link_to "生成画像の追加", [:admin , :users] %>
+        <% else %>
+          <%= link_to "QRコード" , accounts_show_path %>
+          <%= link_to "入力フォーム" , accounts_edit_path  %>
+          <%= link_to "画風選択" , selectPictureStyle_users_path  %>
+          <%= link_to "生成された画像" , showPicture_users_path  %>
+        <% end %>
+      </div>
     <% end %>
-    <%= button_to "ログアウト", session_path, method: :delete %>
-  </ul>
-<% end %>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fas fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<script>
+  function myFunction() {
+    var x = document.querySelector(".nav-links");
+    x.classList.toggle("show");
+  }
+</script>
