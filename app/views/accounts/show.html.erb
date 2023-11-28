@@ -1,5 +1,5 @@
 <%# QRコード %>
-<% if !current_user.bus_question %>
+<% if !current_user.astringency_Fresh %>
   <div class="Highlight" id="form-incomplete">
     <p>フォーム 未完了</p>
   </div>
@@ -16,7 +16,7 @@
 <% end%>
 
 <script>
-  if (!current_user.bus_question) {
+  if (!current_user.astringency_Fresh) {
     document.getElementById("form-incomplete").style.display = "block";
   }
 

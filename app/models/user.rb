@@ -11,4 +11,14 @@ class User < ApplicationRecord
       self.picture = new_picture
     end
   end
+
+  has_one_attached :picture_dall
+
+  attribute :new_picture_dall
+
+  before_save do
+    if new_picture_dall
+      self.picture_dall = new_picture_dall
+    end
+  end
 end

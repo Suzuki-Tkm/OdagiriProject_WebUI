@@ -6,8 +6,22 @@
   <div><%= form.submit %></div>
 <% end %>
 
+<%= form_for [:admin , @user] do |form| %>
+<table class="attr">
+    <th><%= form.label :new_picture_dall %> </th>
+    <td><%= form.file_field :new_picture_dall %> </th>
+</table>
+  <div><%= form.submit %></div>
+<% end %>
+
 <% if @user.picture.attached? %>
   <%= image_tag(rails_blob_path(@user.picture)) %>
+<% else %>
+  <p>まだ生成されていません。表示されない場合はリロードをしてください</p>
+<% end %>
+
+<% if @user.picture_dall.attached? %>
+  <%= image_tag(rails_blob_path(@user.picture_dall)) %>
 <% else %>
   <p>まだ生成されていません。表示されない場合はリロードをしてください</p>
 <% end %>
